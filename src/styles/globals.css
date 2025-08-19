@@ -1,0 +1,155 @@
+/* 
+   Base / Reset styles
+ */
+/* Set the default font for the whole app */
+:root { font-family: system-ui, sans-serif; }
+/* Ensure padding/borders are included in element width/height calculations */
+* { box-sizing: border-box; }
+/* Remove default body margin, set background + text color */
+body { margin: 0; background: #fafafa; color: #111; }
+
+
+/*
+   Page-level layout
+*/
+/* Add spacing between direct children of a .page (except the first one) */
+.page > * + * { padding: 2rem }
+/* Limit content width and center it horizontally */
+.container { max-width: 960px; margin: 0 auto; }
+.container--wide {           
+  max-width: 1280px;         
+}
+
+/*
+   Texts
+*/
+/* Main page title style */
+.page-title { margin: 1rem 0 .25rem; font-size: 3rem; }
+/* Subtitle text under the page title */
+.page-subtitle { color: #555; margin: 0 0 1rem; }
+
+
+/*
+   Buttons / CTA row
+*/
+/* Row for calls-to-action, places buttons side by side with gap */
+.cta-row { display: flex; gap: .75rem; margin: 1rem 0 2rem; }
+/* Base button styling */
+.btn { 
+  display: inline-block;
+  padding: .6rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #111;
+  background: #fff;
+  color: #111;
+  text-decoration: none;
+}
+/* Primary (filled) button variation */
+.btn--primary { background: #111; color: #fff; }
+
+
+/*
+   Grid & Card layout
+*/
+/* Generic grid layout: responsive auto-fit columns with gaps */
+.grid { 
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+/* Card container style (white background, border, padding) */
+.card { 
+  background: #fff;
+  border: 1px solid #cac5c5;
+  border-radius: 12px;
+  padding: 1rem;
+}
+/* Card title text */
+.card-title { margin: 0 0 .25rem; font-size: 1.1rem; }
+/* Card body text */
+.card-text { margin: 0; color: #444; }
+
+
+/*
+   Stack utility
+*/
+/* Utility: add consistent spacing between stacked children */
+.stack > * + * {
+  margin-top: var(--stack-gap, 2rem);
+}
+
+
+/*
+   Reports page helpers
+*/
+/* Toolbar for filters/controls (flex row with gap) */
+.toolbar { display: flex; gap: 1rem; align-items: flex-end; margin: 1rem 0; }
+/* KPI grid layout (stat cards) */
+.kpi-grid { grid-template-columns: repeat(auto-fit, minmax(min-content, 1fr)); }
+/* Make an item take the full grid width (all columns) */
+.kpi-grid .span-all {
+  grid-column: 1 / -1;   /* span from first to last column */
+  min-width: 0;          /* prevent overflow in grid items */
+}
+
+/*
+   Stat cards
+*/
+.stat-card { text-align: left; }
+.stat-value { font-size: 1.4rem; font-weight: 700; }
+.stat-label { color: #555; }
+.stat-subtext { color: #888; font-size: .9rem; margin-top: .25rem; }
+
+
+/*
+   Table styling
+*/
+/* Wrapper: allow horizontal scroll on small screens */
+.table-wrap {
+  overflow-x: auto;   /* keep this so if the table grows wider than the screen, 
+                         you can scroll instead of clipping */
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 12px;
+}
+
+.table {
+  border-collapse: collapse;
+  table-layout: auto;   /* default → lets columns size to content */
+  width: auto;          /* key: do NOT force 100% width */
+  min-width: 100%;      /* optional: ensures it’s at least full container width */
+}
+
+.table th, .table td {
+  padding: .65rem .75rem;
+  border-bottom: 1px solid #f0f0f0;
+  text-align: left;
+  white-space: nowrap;   /* keep long numbers on one line */
+}
+.table th { background: #fafafa; font-weight: 600; }
+.table tr:hover td { background: #fcfcfc; }
+/* numeric cells: right-align and allow clipping with ellipsis */
+.table td.num {
+  text-align: right;
+  max-width: 1%;              /* ← key trick: lets this column shrink */
+  white-space: nowrap;        /* keep number on one line */
+  overflow: hidden;           /* clip overflow, no scrollbar */
+  text-overflow: ellipsis;    /* show … if it doesn't fit */
+  font-variant-numeric: tabular-nums;
+}
+
+
+/*
+   Vendor detail header
+*/
+/* Overall vendor header card (grid gap between children) */
+.vendor-header { display: grid; gap: .5rem; }
+/* Flex row for vendor name + metadata */
+.vendor-header__main { display: flex; flex-wrap: wrap; align-items: baseline; gap: 1rem; }
+/* Container for vendor metadata fields */
+.vendor-meta { display: flex; gap: 1rem; flex-wrap: wrap; color: #444; }
+/* Individual metadata item */
+.vendor-meta__item { font-size: .95rem; }
+/* Notes text below vendor info */
+.vendor-notes { margin-top: .5rem; color: #555; }
