@@ -5,7 +5,7 @@ export default function DataTable({ columns, rows, keyField = "id" }) {
         <thead>
           <tr>
             {columns.map((c) => (
-              <th key={c.key}>{c.label}</th>
+              <th key={c.key} className={c.className || ""}>{c.label}</th>
             ))}
           </tr>
         </thead>
@@ -16,7 +16,7 @@ export default function DataTable({ columns, rows, keyField = "id" }) {
             rows.map((r) => (
               <tr key={r[keyField]}>
                 {columns.map((c) => (
-                  <td key={c.key}>
+                  <td key={c.key} className={c.className || ""}>
                     {typeof c.render === "function" ? c.render(r[c.key], r) : r[c.key]}
                   </td>
                 ))}

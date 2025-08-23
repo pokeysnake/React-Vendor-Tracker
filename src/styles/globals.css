@@ -57,7 +57,6 @@ body { margin: 0; background: #fafafa; color: #111; }
   gap: 1rem;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 }
-
 /* Card container style (white background, border, padding) */
 .card { 
   background: #fff;
@@ -117,8 +116,7 @@ body { margin: 0; background: #fafafa; color: #111; }
 .table {
   border-collapse: collapse;
   table-layout: auto;   /* default → lets columns size to content */
-  width: auto;          /* key: do NOT force 100% width */
-  min-width: 100%;      /* optional: ensures it’s at least full container width */
+  width: 100%     /* optional: ensures it’s at least full container width */
 }
 
 .table th, .table td {
@@ -127,6 +125,13 @@ body { margin: 0; background: #fafafa; color: #111; }
   text-align: left;
   white-space: nowrap;   /* keep long numbers on one line */
 }
+
+/* Keep numbers on the right; make rightmost really hug the right edge */
+.table th:last-child,
+.table td:last-child {
+  text-align: right;
+}
+
 .table th { background: #fafafa; font-weight: 600; }
 .table tr:hover td { background: #fcfcfc; }
 /* numeric cells: right-align and allow clipping with ellipsis */
@@ -153,3 +158,13 @@ body { margin: 0; background: #fafafa; color: #111; }
 .vendor-meta__item { font-size: .95rem; }
 /* Notes text below vendor info */
 .vendor-notes { margin-top: .5rem; color: #555; }
+
+
+/*
+    Date Range Picker
+*/
+/* Simple form cosmetics used by DateRangePicker */
+.form-label { display: block; font-size: .9rem; color: #555; margin-bottom: .25rem; }
+.form-input { padding: .45rem .6rem; border: 1px solid #d1d5db; border-radius: 8px; background: #fff; }
+/* Generic numeric right-align fallback */
+.num { text-align: right; font-variant-numeric: tabular-nums; }
