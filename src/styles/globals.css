@@ -168,3 +168,24 @@ body { margin: 0; background: #fafafa; color: #111; }
 .form-input { padding: .45rem .6rem; border: 1px solid #d1d5db; border-radius: 8px; background: #fff; }
 /* Generic numeric right-align fallback */
 .num { text-align: right; font-variant-numeric: tabular-nums; }
+
+/*
+    Form Input
+*/
+.form-field { display: grid; gap: .35rem; }
+.form-row { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+.field-hint { color: #6b7280; font-size: .8rem; }
+.field-error { color: #dc2626; font-size: .85rem; }
+/* Bottom button row inside forms */
+.form-actions {
+  display: flex;
+  gap: .75rem;           /* even space between buttons */
+  align-items: center;
+  flex-wrap: wrap;       /* wraps nicely on small screens */
+  margin-top: 1rem;      /* only top margin (no extra bottom spacing) */
+}
+
+/* If you prefer them spread to the edges, swap the justify-content: */
+/* .form-actions { justify-content: space-between; }  // pushes to card edges */
+/* Or: .form-actions { justify-content: space-evenly; } // equal gaps all around */
+
